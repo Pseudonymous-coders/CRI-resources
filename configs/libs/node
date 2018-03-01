@@ -2,18 +2,28 @@
 CGLOBS=/tmp/globs
 source $CGLOBS/globvar
 source $CGLOBS/globfun
+NODE_BUILD=$CBUILD/nodebrew-0.9.8
+
 echo "
 Installing node..."
 cd $CPKG
 installer "https://github.com/hokaccha/nodebrew/archive/v0.9.8.tar.gz" $CPKG/node.tar.gz
 unpacker "node.tar.gz" $CBUILD
-cd $CBUILD/nodebrew-0.9.8
+cd $NODE_BUILD
 sudo mkdir -p $PREF/share/nodebrew
-NODEBREW_ROOT=$PREF/share/nodebew sudo perl nodebrew setup > /dev/null
-sudo ln -s $PREF/share/nodebrew/nodebrew $BIN_DIR
-sudo ln -s $PREF/share/nodebrew/current/bin/node $BIN_DIR
-sudo ln -s $PREF/share/nodebrew/current/bin/npm $BIN_DIR 
-sudo ln -s $PREF/share/nodebrew/current/bin/npx $BIN_DIR 
+NODEBREW_ROOT=$PREF/share/nodebrew sudo perl nodebrew setup > /dev/null
+[ -e $BIN_DIR/nodebrew ] && rm $BIN_DIR/nodebrew
+[ -e $BIN_DIR/node ] && rm $BIN_DIR/node
+[ -e $BIN_DIR/npm ] && rm $BIN_DIR/npm
+[ -e $BIN_DIR/npx ] && rm $BIN_DIR/npx
 sudo ln -s $PREF/share/nodebrew $HOME/.nodebrew
+cd $HOME/.nodebrew
+NODEBREW_ROOT=$PREF/share/nodebrew sudo perl nodebrew install latest
+
+cd $NODE_BUILD
+sudo ln -s $PREF/share/nodebrew/nodebrew $BIN_DIR/nodebrew
+sudo ln -s $PREF/share/nodebrew/current/bin/node $BIN_DIR/node
+sudo ln -s $PREF/share/nodebrew/current/bin/npm $BIN_DIR/nodebrew 
+sudo ln -s $PREF/share/nodebrew/current/bin/npx $BIN_DIR/nodebrew
 cleaner $CBUILD # Clean up files
 echo "Done"
