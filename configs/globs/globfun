@@ -27,13 +27,13 @@ sudo chmod 755 /usr/local/* /usr/local/bin/* /usr/local/lib/* /usr/local/lib64/*
 
 installer() 
 {
-sudo curl -# -o "$2" "$1" 
+sudo curl -Ls -# -o "$2" "$1" 
 }
 
 unpacker() 
 {
 #echo "|----------------------------------------------------------------------------|"
-sudo tar -zxf "$1" -C "$2" --checkpoint=.150 #$($(tar -tzf "$1" | wc -l) / (78))
+sudo tar -xzf "$1" -C "$2" --checkpoint=.150 #$($(tar -tzf "$1" | wc -l) / (78))
 #echo ""
 #sudo tar -zxf "$1" -C "$2" | pv -s `du -sb . | grep -o '[0-9]\+'` -N tar 
 }
