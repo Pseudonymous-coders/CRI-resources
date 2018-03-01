@@ -16,14 +16,13 @@ NODEBREW_ROOT=$PREF/share/nodebrew sudo perl nodebrew setup > /dev/null
 [ -e $BIN_DIR/node ] && rm $BIN_DIR/node
 [ -e $BIN_DIR/npm ] && rm $BIN_DIR/npm
 [ -e $BIN_DIR/npx ] && rm $BIN_DIR/npx
+[ -e $HOME/.nodebrew ] && rm $HOME/.nodebrew
 sudo ln -s $PREF/share/nodebrew $HOME/.nodebrew
-cd $HOME/.nodebrew
-NODEBREW_ROOT=$PREF/share/nodebrew sudo perl nodebrew install latest
-
-cd $NODE_BUILD
 sudo ln -s $PREF/share/nodebrew/nodebrew $BIN_DIR/nodebrew
-sudo ln -s $PREF/share/nodebrew/current/bin/node $BIN_DIR/node
-sudo ln -s $PREF/share/nodebrew/current/bin/npm $BIN_DIR/nodebrew 
-sudo ln -s $PREF/share/nodebrew/current/bin/npx $BIN_DIR/nodebrew
+sudo nodebrew install-binary latest
+
+sudo ln -s $PREF/share/nodebrew/node/*/bin/node $BIN_DIR/node
+sudo ln -s $PREF/share/nodebrew/node/*/bin/npm $BIN_DIR/nodebrew 
+sudo ln -s $PREF/share/nodebrew/node/*/bin/npx $BIN_DIR/nodebrew
 cleaner $CBUILD # Clean up files
 echo "Done"
