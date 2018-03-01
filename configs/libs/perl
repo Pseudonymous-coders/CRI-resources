@@ -11,6 +11,8 @@ elif [[ "$ARCH" == "x86_64" ]];then
     installer "https://dl.bintray.com/chromebrew/chromebrew/perl-5.26.1-chromeos-x86_64.tar.xz" $CPKG/perl.tar.xz
 fi
 unpacker "perl.tar.gz" $CBUILD
+
+cd $CBUILD
 sudo cp -r usr/local/ /usr/  # Move all of the files
 cleaner $CBUILD # Clean up files
 echo "Done"
