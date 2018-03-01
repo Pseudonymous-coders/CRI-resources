@@ -1,0 +1,25 @@
+export AUTHORS="Eli Smith and David Smerkous"
+export VERSION="installer-1.0.0"
+export URL="https://raw.githubusercontent.com/Pseudonymous-coders/CRI/master"
+export RURL="https://raw.githubusercontent.com/Pseudonymous-coders/CRI-resources/master"
+export USER=$(whoami)
+export ARCH=$(uname -m)
+
+export PREF=/usr/local
+export BIN_DIR=$PREF/bin
+export LIB_PATH=$PREF/lib/cri/
+export CONFIG_PATH=$PREF/etc/cri/
+export CRI_DIR=$PREF/tmp/cri/
+export DEST_DIR=$CRI_DIR/dest
+export PKG_PATH=$LIB_PATH/packages
+export CTEMP=/tmp
+export CPKG=$CTEMP/pkg
+export CBUILD=$CTEMP/build
+export CDOWNLOAD=~/Downloads
+export CGLOBS=$CTEMP/globs
+export CROUTON_RELEASE=trusty
+export CROUTON=/mnt/stateful_partition/crouton/chroots/$CROUTON_RELEASE
+export URLCROUTON="https://raw.githubusercontent.com/dnschneid/crouton/master/installer/crouton"
+export EXTENSION=/home/chronos/user/Extensions/nhbmpbdladcchdhkemlojfjdknjadhmh
+export UPFOLDER=$CTEMP/cridate
+export CFGFILE=$UPFOLDER/cri.cfg

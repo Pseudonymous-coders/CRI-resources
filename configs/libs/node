@@ -1,0 +1,19 @@
+#!/bin/bash
+CGLOBS=/tmp/globs
+source $CGLOBS/globvar
+source $CGLOBS/globfun
+echo "
+Installing node..."
+cd $CPKG
+installer "https://github.com/hokaccha/nodebrew/archive/v0.9.8.tar.gz" $CPKG/node.tar.gz
+unpacker "node.tar.gz" $CBUILD
+cd $CBUILD/nodebrew-0.9.8
+sudo mkdir -p $PREF/share/nodebrew
+NODEBREW_ROOT=$PREF/share/nodebew sudo perl nodebrew setup > /dev/null
+sudo ln -s $PREF/share/nodebrew/nodebrew $BIN_DIR
+sudo ln -s $PREF/share/nodebrew/current/bin/node $BIN_DIR
+sudo ln -s $PREF/share/nodebrew/current/bin/npm $BIN_DIR 
+sudo ln -s $PREF/share/nodebrew/current/bin/npx $BIN_DIR 
+sudo ln -s $PREF/share/nodebrew $HOME/.nodebrew
+cleaner $CBUILD # Clean up files
+echo "Done"
