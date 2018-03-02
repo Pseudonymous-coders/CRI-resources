@@ -12,17 +12,17 @@ unpacker "node.tar.gz" $CBUILD
 cd $NODE_BUILD
 sudo mkdir -p $PREF/share/nodebrew
 NODEBREW_ROOT=$PREF/share/nodebrew sudo perl nodebrew setup > /dev/null
-[ -e $BIN_DIR/nodebrew ] && rm $BIN_DIR/nodebrew
-[ -e $BIN_DIR/node ] && rm $BIN_DIR/node
-[ -e $BIN_DIR/npm ] && rm $BIN_DIR/npm
-[ -e $BIN_DIR/npx ] && rm $BIN_DIR/npx
-[ -e $HOME/.nodebrew ] && rm $HOME/.nodebrew
+[ -e $BIN_DIR/nodebrew ] && sudo rm $BIN_DIR/nodebrew
+[ -e $BIN_DIR/node ] && sudo rm $BIN_DIR/node
+[ -e $BIN_DIR/npm ] && sudo rm $BIN_DIR/npm
+[ -e $BIN_DIR/npx ] && sudo rm $BIN_DIR/npx
+[ -e $HOME/.nodebrew ] && sudo rm -rf $HOME/.nodebrew
 sudo ln -s $PREF/share/nodebrew $HOME/.nodebrew
 sudo ln -s $PREF/share/nodebrew/nodebrew $BIN_DIR/nodebrew
 sudo nodebrew install-binary latest
 
 sudo ln -s $PREF/share/nodebrew/node/*/bin/node $BIN_DIR/node
 sudo ln -s $PREF/share/nodebrew/node/*/bin/npm $BIN_DIR/nodebrew 
-sudo ln -s $PREF/share/nodebrew/node/*/bin/npx $BIN_DIR/nodebrew
+sudo ln -s $PREF/share/nodebrew/node/*/bin/npx $BIN_DIR/npx
 cleaner $CBUILD # Clean up files
 echo "Done"
