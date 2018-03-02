@@ -22,7 +22,7 @@ sudo ln -s $PREF/share/nodebrew/nodebrew $BIN_DIR/nodebrew
 sudo nodebrew install-binary latest
 
 sudo ln -s $PREF/share/nodebrew/node/*/bin/node $BIN_DIR/node
-sudo ln -s $PREF/share/nodebrew/node/*/bin/npm $BIN_DIR/nodebrew 
+sudo ln -s $PREF/share/nodebrew/node/*/bin/npm $BIN_DIR/npm 
 sudo ln -s $PREF/share/nodebrew/node/*/bin/npx $BIN_DIR/npx
 cleaner $CBUILD # Clean up files
 echo "Done"
