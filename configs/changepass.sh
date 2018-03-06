@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SUDOERS_FILE=/usr/sudoers
+SUDOERS_FILE=/etc/sudoers
 SUDOERS_NOPASSWD="chronos ALL=(ALL) NOPASSWD:ALL"
 
 printf "Changing passwords..."
