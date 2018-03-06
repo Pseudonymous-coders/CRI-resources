@@ -3,6 +3,7 @@ CGLOBS=/tmp/globs
 source $CGLOBS/globvar
 source $CGLOBS/globfun
 NODE_BUILD=$CBUILD/nodebrew-0.9.8
+NODE_VERSION="v9.7.1"
 
 echo "
 Installing node..."
@@ -19,10 +20,10 @@ NODEBREW_ROOT=$PREF/share/nodebrew sudo perl nodebrew setup > /dev/null
 [ -L $HOME/.nodebrew ] && sudo rm -rf $HOME/.nodebrew
 sudo ln -s $PREF/share/nodebrew $HOME/.nodebrew
 sudo ln -s $PREF/share/nodebrew/nodebrew $BIN_DIR/nodebrew
-sudo nodebrew install-binary latest
+sudo nodebrew install-binary "$NODE_VERSION"
 
-sudo ln -s $PREF/share/nodebrew/node/*/bin/node $BIN_DIR/node
-sudo ln -s $PREF/share/nodebrew/node/*/bin/npm $BIN_DIR/npm 
-sudo ln -s $PREF/share/nodebrew/node/*/bin/npx $BIN_DIR/npx
+sudo ln -s "$PREF/share/nodebrew/node/$NODE_VERSION/bin/node $BIN_DIR/node"
+sudo ln -s "$PREF/share/nodebrew/node/$NODE_VERSION/bin/npm $BIN_DIR/npm"
+sudo ln -s "$PREF/share/nodebrew/node/$NODE_VERSION/bin/npx $BIN_DIR/npx"
 cleaner $CBUILD # Clean up files
 echo "Done"
