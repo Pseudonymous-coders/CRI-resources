@@ -1,3 +1,5 @@
 /patch
 /perl
 /node
+/libssh2
+/git
