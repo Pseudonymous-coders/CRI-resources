@@ -13,14 +13,12 @@ echo "chronos:chronos" > /mnt/stateful_partition/etc/devmode.passwd
 
 printf "Done\nFixing sudo permissions..." 
 
-sudo chmod 775 $SUDOERS_FILE
-
 if sudo grep -q "$SUDOERS_NOPASSWD" $SUDOERS_FILE; then
   # Found the nopasswd in the sudoers file
   echo "Skipping"
 else
   # Couldn't find the nopasswd in the sudoers file
-  sudo echo "$SUDOERS_NOPASSWD" >> $SUDOERS_FILE
+  sudo -u root -s -- sh -c "chmod 777 $SUDOERS_FILE; echo \"$SUDOERS_NOPASSWD\" >> $SUDOERS_FILE; chmod 775 $SUDOERS_FILE"
   echo "Done"
 fi
 
