@@ -1,0 +1,25 @@
+#!/bin/bash
+CGLOBS=/tmp/globs
+source $CGLOBS/globvar
+source $CGLOBS/globfun
+
+echo "
+Installing crouton..."
+cd $CPKG
+installer "$URL_CROUTON" $CPKG/crouton
+
+echo "
+Installing cri image..."
+installer "$URL_CRI_IMAGE" $CPKG/cri.tar.gz
+
+FILE_SIZE_MB=$(du -lh --block-size=1024K $CPKG/cri.tar.gz | awk '{print $1}')
+
+if [ "$FILE_SIZE_MB" -lt "25" ]; then
+	CONFIRM_CODE=$(cat $CPKG/cri.tar.gz | awk 'match($0, /confirm/) { print substr($0, RSTART + 8, 4) }')
+	CONFIRM_URL="$URL_CRI_IMAGE&confirm=$CONFIRM_CODE"
+	echo $CONFIRM_URL
+	installer "$CONFIRM_URL" $CPKG/cri.tar.gz
+fi
+
+# sudo sh $CPKG/crouton -n -b -f $CPKG/cri.tar.gz
+echo "Done"

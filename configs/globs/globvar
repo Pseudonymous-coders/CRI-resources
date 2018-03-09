@@ -17,9 +17,9 @@ export CPKG=$CTEMP/pkg
 export CBUILD=$CTEMP/build
 export CDOWNLOAD=~/Downloads
 export CGLOBS=$CTEMP/globs
-export CROUTON_RELEASE=trusty
-export CROUTON=/mnt/stateful_partition/crouton/chroots/$CROUTON_RELEASE
-export URLCROUTON="https://raw.githubusercontent.com/dnschneid/crouton/master/installer/crouton"
+export CRI_ROOT=/mnt/stateful_partition/crouton/chroots/cri
+export URL_CROUTON="https://raw.githubusercontent.com/dnschneid/crouton/master/installer/crouton"
+export URL_CRI_IMAGE="https://drive.google.com/uc?export=download&id=1g0oZCmwmvuBgi7_4gZnbK56OUP_4Nku_"
 export EXTENSION=/home/chronos/user/Extensions/nhbmpbdladcchdhkemlojfjdknjadhmh
 export UPFOLDER=$CTEMP/cridate
 export CFGFILE=$UPFOLDER/cri.cfg
